@@ -32,7 +32,8 @@ const routes: Routes = [
   },
   {
     path: 'edit-listing/:id',
-    component: EditListingPageComponent
+    component: EditListingPageComponent,
+    title: 'BuyAndSell | Edit listing',
   },
   {
     path: 'my-listings',

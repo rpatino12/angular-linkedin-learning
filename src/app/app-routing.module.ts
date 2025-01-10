@@ -27,7 +27,8 @@ const routes: Routes = [
   },
   {
     path: 'contact/:id',
-    component: ContactPageComponent
+    component: ContactPageComponent,
+    title: 'BuyAndSell | Contact seller',
   },
   {
     path: 'edit-listing/:id',

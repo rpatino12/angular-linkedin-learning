@@ -11,6 +11,10 @@ import { Listing } from '../types';
 })
 export class ListingDataFormComponent implements OnInit {
   @Input() buttonText: any;
+  @Input() currentName = '';
+  @Input() currentDescription = '';
+  @Input() currentPrice = '';
+
   @Output() onSubmit = new EventEmitter<Listing>();
 
   name: string = '';
@@ -21,7 +25,11 @@ export class ListingDataFormComponent implements OnInit {
     private router: Router,
   ) {}
   
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.name = this.currentName;
+    this.description = this.currentDescription;
+    this.price = this.currentPrice;
+  }
 
   onButtonClicked(): void {
     this.onSubmit.emit({

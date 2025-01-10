@@ -36,7 +36,8 @@ const routes: Routes = [
   },
   {
     path: 'my-listings',
-    component: MyListingsPageComponent
+    component: MyListingsPageComponent,
+    title: 'BuyAndSell | My listings',
   },
   {
     path: 'new-listing',

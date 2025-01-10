@@ -51,16 +51,9 @@ div {
 
 #top-bar {
     border-bottom: 2px solid black;
-}
-
-#app-heading {
-    margin-top: 0;
-}
-
-#my-listings-button {
-    position: absolute;
-    top: 16px;
-    right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #content-wrap {

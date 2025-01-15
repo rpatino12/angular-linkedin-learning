@@ -37,11 +37,6 @@ export class ListingsService {
     );
   }
 
-  // async getListingsForUser(userId: string | null): Promise<Listing[]> {
-  //   const data = await fetch(`${this.url}/users/${userId}/listings`);
-  //   return await data.json() ?? [];
-  // }
-
   getListingsForUser(): Observable<Listing[]> {
     return this.http.get<Listing[]>(`${this.url}/users/12345/listings`); // Hardcoded the user, it will get the user by authentication later
   }
@@ -53,6 +48,14 @@ export class ListingsService {
   createListing(name: string, description: string, price: number): Observable<Listing> {
     return this.http.post<Listing>(
       `${this.url}/listings`,
+      {name, description, price},
+      httpOptions
+    );
+  }
+
+  editListing(id:string | undefined, name: string, description: string, price: number): Observable<Listing> {
+    return this.http.patch<Listing>(
+      `${this.url}/listings/${id}`,
       {name, description, price},
       httpOptions
     );

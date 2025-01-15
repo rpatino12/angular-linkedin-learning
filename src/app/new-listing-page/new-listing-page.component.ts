@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ListingsService } from '../services/listings.service';
+import { Listing } from '../types';
 
 @Component({
   selector: 'app-new-listing-page',
@@ -11,12 +13,15 @@ import { Router } from '@angular/router';
 export class NewListingPageComponent implements OnInit {
   constructor(
     private router: Router,
+    private listingsService: ListingsService,
   ) {}
   
   ngOnInit(): void {}
 
-  onSubmit(): void {
-    alert('Creating new listing...');
-    this.router.navigateByUrl('/my-listings');
+  onSubmit({name, description, price}: Listing): void {
+    this.listingsService.createListing(name, description, price)
+      .subscribe(() => {
+        this.router.navigateByUrl('/my-listings');
+      });
   }
 }

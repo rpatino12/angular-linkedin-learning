@@ -14,6 +14,8 @@ const httpOptions = {
 })
 export class ListingsService {
 
+  url = 'http://localhost:8000/api';
+
   constructor(
     private http: HttpClient
   ) { }
@@ -22,13 +24,14 @@ export class ListingsService {
     return this.http.get<Listing[]>('/api/listings');
   }
 
-  getListingById(id: string | null): Observable<Listing> {
-    return this.http.get<Listing>(`/api/listings/${id}`);
+  async getListingById(id: string | null): Promise<Listing | undefined> {
+    const data = await fetch(`${this.url}/listings/${id}`);
+    return await data.json() ?? {};
   }
 
   addViewToListing(id: string | null): Observable<Listing> {
     return this.http.patch<Listing>(
-      `/api/listings/${id}/add-view`,
+      `${this.url}/listings/${id}/add-view`,
       {},
       httpOptions
     );

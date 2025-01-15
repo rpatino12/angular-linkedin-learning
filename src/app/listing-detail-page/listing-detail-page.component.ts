@@ -22,16 +22,14 @@ export class ListingDetailPageComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    //this.isLoading = false;
     
-    this.listingsService.getListingById(id).
-      subscribe(listing => {
+    this.listingsService.getListingById(id)
+      .then(listing => {
         this.listing = listing;
         this.isLoading = false;
       });
     
-    this.listingsService.addViewToListing(id).
-      subscribe(() => console.log('Views updated!'));
+    this.listingsService.addViewToListing(id).subscribe(() => console.log('Views updated!'));
   }
 
 }

@@ -36,4 +36,17 @@ export class ListingsService {
       httpOptions
     );
   }
+
+  // async getListingsForUser(userId: string | null): Promise<Listing[]> {
+  //   const data = await fetch(`${this.url}/users/${userId}/listings`);
+  //   return await data.json() ?? [];
+  // }
+
+  getListingsForUser(): Observable<Listing[]> {
+    return this.http.get<Listing[]>(`${this.url}/users/12345/listings`); // Hardcoded the user, it will get the user by authentication later
+  }
+
+  deleteListing(id: string): Observable<any> {
+    return this.http.delete(`${this.url}/listings/${id}`);
+  }
 }

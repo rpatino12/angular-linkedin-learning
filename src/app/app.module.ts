@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +16,7 @@ import { EditListingPageComponent } from './edit-listing-page/edit-listing-page.
 import { FormsModule } from '@angular/forms';
 import { ListingDataFormComponent } from './listing-data-form/listing-data-form.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,4 +39,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    // Initialize Firebase
+    const app = initializeApp(environment.firebaseConfig);
+    const analytics = getAnalytics(app);
+  }
+}
